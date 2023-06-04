@@ -7,8 +7,8 @@ services:
       POSTGRES_PASSWORD: admin
       PGDATA: /data/postgres
     volumes:
-      - database/initdb:/docker-entrypoint-initdb.d
-      - database/postgres:/data/postgres
+      - ./database/initdb:/docker-entrypoint-initdb.d
+      - ./database/postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
@@ -23,7 +23,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - database/pgadmin:/var/lib/pgadmin
+      - ./database/pgadmin:/var/lib/pgadmin
     ports:
       - "5050:80"
     networks:
