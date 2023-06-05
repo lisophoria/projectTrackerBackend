@@ -16,4 +16,16 @@ public class CategoryController {
     public List<Category> getCategoriesByUserId(@PathVariable("userId") Integer userId) {
         return categoryRepository.getByUserId(userId);
     }
+
+    @DeleteMapping("/{categoryId}")
+    public void deleteCategoryById(@PathVariable("categoryId") Integer categoryId) {
+        categoryRepository.deleteById(categoryId);
+    }
+
+    @PostMapping
+    public Category save(
+        @RequestBody Category request
+    ) {
+        return categoryRepository.save(request);
+    }
 }
