@@ -1,5 +1,6 @@
 package com.lisophoria.projectTracker.auth;
 
+import com.lisophoria.projectTracker.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,5 +14,5 @@ public class AuthenticationResponse {
 
   private String accessToken;
   private String refreshToken;
-  private Integer userId;
+  private User user;
 }
