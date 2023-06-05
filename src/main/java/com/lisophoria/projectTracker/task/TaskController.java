@@ -23,9 +23,9 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task save(
+    public void save(
         @RequestBody Task request
     ) {
-        return taskRepository.save(request);
+        taskRepository.save(request);
     }
 }

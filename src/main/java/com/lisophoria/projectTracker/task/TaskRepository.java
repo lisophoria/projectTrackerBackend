@@ -41,7 +41,7 @@ public class TaskRepository {
     }
 
     @Transactional
-    public Task save(Task task) {
+    public void save(Task task) {
         try {
             String checkIsExistsSql = "select exists(select 1 from task where taskId = :taskId)";
             SqlParameterSource checkIsExistsParameterSource = new MapSqlParameterSource()
@@ -60,17 +60,14 @@ public class TaskRepository {
                         .addValue("status", task.getStatus())
                         .addValue("taskId", task.getTaskId());
             } else {
-                sql = "insert into public.task (taskId, taskName, description, categoryId, status) values (:taskId, :taskName, :description, :categoryId, false)";
+                sql = "insert into public.task (taskName, description, categoryId, status) values (:taskName, :description, :categoryId, false)";
                 parameterSource = new MapSqlParameterSource()
-                        .addValue("taskId", task.getTaskId())
                         .addValue("taskName", task.getTaskName())
                         .addValue("description", task.getDescription())
                         .addValue("categoryId", task.getCategoryId());
             }
 
             template.update(sql, parameterSource);
-
-            return task;
         } catch (Exception e) {
             throw new RuntimeException("cannot save task", e);
         }
