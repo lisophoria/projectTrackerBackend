@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/temp
+    url: jdbc:postgresql://localhost:5432/projectTracker
     username: admin
-    password: 1321
+    password: admin
     driver-class-name: org.postgresql.Driver
 application:
   security:
