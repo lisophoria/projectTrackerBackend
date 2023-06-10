@@ -55,7 +55,8 @@ public class AuthenticationService {
               )
       );
     } catch (Exception e) {
-      System.out.println(e);
+      System.out.println(e + " for logging user " + request.getEmail());
+      throw e;
     }
     var user = repository.findByEmail(request.getEmail())
         .orElseThrow();
